@@ -1,13 +1,12 @@
 package com.piysati.authentication.repository;
 
-import com.piysati.authentication.entity.User;
+import com.piysati.authentication.entity.MyUser;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
-import java.util.List;
 import java.util.Optional;
 
-public interface UserRepository extends JpaRepository<User, Short> {
+public interface UserRepository extends JpaRepository<MyUser, Short> {
     /**
      * By default basic CRUD operations
         Saves or updates the given entity : savsave(S entity)
@@ -26,13 +25,14 @@ public interface UserRepository extends JpaRepository<User, Short> {
 **/
 // list of custom operation with flexible return types/
 
-    List<User> findByName(String name);
+    Optional<MyUser> findByName(String name);
 
-    Optional<User> findByEmail(String email);
+    Optional<MyUser> findByEmail(String email);
 
-    Optional<User> findByNameAndEmail(String name, String email);
+    Optional<MyUser> findByNameAndEmail(String name, String email);
 
-    @Query("SELECT u FROM User u WHERE u.email = ?1")
-    Optional<User> findByEmailCustom(String email);
+//    @Query("SELECT u FROM User u WHERE u.email = ?1")
+//    Optional<MyUser> findByEmailCustom(String email);
+
 
 }

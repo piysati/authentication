@@ -17,4 +17,7 @@ public class MyController {
         return "signup";
     }
 
+    @GetMapping("/index")
+    public String home(){ return "index"; }
+
 }
